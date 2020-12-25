@@ -1,0 +1,29 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container">
+  <div class="row">
+<div class="mx-auto">
+<h2>User info</h2>
+<%= form_with model:@user, local:true do |f| %>
+  <label for="inputName">Name</label>
+  <p><%= f.text_field :name, autofocus: true, id:"inputName" %></p>
+
+  <p><label for="inputImage">Image</label></p>
+  <p><%= f.attachment_field :profile_image, placeholder: "ファイルを選択" %></p>
+  <label for="inputIntroduction">Introduction</label>
+  <p><%= f.text_field :introduction, autofocus: true, id:"inputIntroduction" %></p>
+  <p><%= f.submit "Update User" %></p>
+<% end %>
+
+<p>CopyRight Infratop.inc</p>
+
+</div>
+</div>
+</div>
